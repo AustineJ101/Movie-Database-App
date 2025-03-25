@@ -1,11 +1,14 @@
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Homepage";
 
 function App() {
 
   return (
-    <div>
-        <h1 className="text-center text-2xl font-bold m-4 text-red-700">Movie Database</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+      </Routes>
+    </Router>
   )
 }
 
