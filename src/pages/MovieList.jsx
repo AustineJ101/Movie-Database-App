@@ -48,10 +48,10 @@ function MovieList() {
             
             <div className="mt-16 p-4">
                 
-                { isLoading &&<p>Searching for{query}...</p>}
+                { isLoading &&<p>Searching for {query}...</p>}
                 {error && <p>Error fetching the {isMovie? "movie" : "tv show"}</p>}
                 {data?.pages[0].results.length == 0  && <p className="text-2xl">No {isMovie? "Movie" : "TV Show"} found matching <span className="font-semibold text-center">"{query}🥲"</span></p>}
-                {data?.pages[0].results.length > 0 && <h1 className="text-2xl mb-4">Showing results for  <span className="font-semibold">"{query}"</span> ({data?.pages[0].total_results > 1? "matches" : "1 match"} found)</h1>}
+                {data?.pages[0].results.length > 0 && <h1 className="text-2xl mb-4">Showing results for  <span className="font-semibold">"{query}"</span> ({data?.pages[0].total_results > 1? data?.pages[0].total_results + " matches" : "1 match"} found)</h1>}
                
 
                 {data?.pages.map((page, index) => (
