@@ -8,7 +8,7 @@ function Home(){
     const isMovie = useAppStore(state => state.isMovie);
     const activateMovie = useAppStore(state => state.activateMovie);
     const activateTv = useAppStore(state => state.activateTv);
-    let bannerImg;
+//    let bannerImg;
   
     const fetchTrending = async () =>{
         const url = `https://api.themoviedb.org/3/trending/${isMovie ? "movie" : "tv"}/day?api_key=${API_KEY}`
@@ -16,7 +16,7 @@ function Home(){
         if(!response.ok) throw new Error("Failed to fetch trending");
         const data = await response.json();
 
-        bannerImg = `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`;
+    //    bannerImg = `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`;
         return data;
     }
 
@@ -45,12 +45,11 @@ function Home(){
     const {data: trending, isLoading: trendingLoading, error: trendingError} = useQuery({
         queryKey: [...trendingCacheKey],
         queryFn: () => fetchTrending(),
-        keepPreviousData: true
     })
 
     const {data:nowPlaying, isLoading: nowPlayingLoading, error: nowPlayingError} = useQuery({
         queryKey: [...nowPlayingCacheKey],
-        queryFn: () => fetchNowPlaying()
+        queryFn: () => fetchNowPlaying(),
     })
 
     const {data: topRated, isLoading: topRatedLoading, error: topRatedError} = useQuery({
@@ -101,6 +100,8 @@ function Home(){
                 <div className="flex flex-wrap gap-4">
                    {trending?.results.map(result => (
                     <MovieCard 
+                        key={result.id}
+                        id={result.id}
                         poster_path={result.poster_path}
                         title={isMovie? result.title : result.name}
                         date={isMovie? result.release_date : result.first_air_date}
@@ -121,6 +122,8 @@ function Home(){
                 <div className="flex flex-wrap gap-4">
                    {nowPlaying?.results.map(result => (
                     <MovieCard 
+                        key={result.id}
+                        id={result.id}
                         poster_path={result.poster_path}
                         title={isMovie? result.title : result.name}
                         date={isMovie? result.release_date : result.first_air_date}
@@ -140,6 +143,8 @@ function Home(){
                 <div className="flex flex-wrap gap-4">
                    {topRated?.results.map(result => (
                     <MovieCard 
+                        key={result.id}
+                        id={result.id}
                         poster_path={result.poster_path}
                         title={isMovie? result.title : result.name}
                         date={isMovie? result.release_date : result.first_air_date}

@@ -62,6 +62,7 @@ function MovieList() {
                                 
                                 <MovieCard 
                                     key={result.id}
+                                    id={result.id}
                                     poster_path={result.poster_path}
                                     title={isMovie? result.title : result.name}
                                     date={isMovie? result.release_date : result.first_air_date}
