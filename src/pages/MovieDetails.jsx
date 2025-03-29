@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAppStore from "../store/app";
 import YouTube from "react-youtube";
+import CastCard from "../components/CastCard";
 const API_KEY = "bd1a21503c373ee9f7e8e702f2372631";
 
 function MovieDetails(){
@@ -34,10 +35,13 @@ function MovieDetails(){
         if(!response.ok) throw new Error("Failed to fetch cast");
         const data = await response.json();
 
-        console.log(data);
+        return data;
     }
 
-    
+    const {data: cast, isLoading: castLoading, error: castError} = useQuery({
+        queryKey: [id, "cast"],
+        queryFn: getCast
+    })
 
     const fetchDetails = async ({queryKey}) => {
         const [cacheKey, id] = queryKey;
@@ -84,7 +88,7 @@ function MovieDetails(){
 
 
             <div className="p-2 flex items-center pt-4 justify-between border-b">
-                <h1 className="text-2xl font-bold text-red-600" >{isMovie? data?.title : data?.name} {!isMovie? <span className="font-it">({(data?.seasons.length) > 1 ? data?.seasons.length + " Seasons" :data?.seasons.length +  " Season"})</span> : ""}</h1>
+                <h1 className="text-3xl font-bold text-red-600" >{isMovie? data?.title : data?.name} {!isMovie? <span className="font-it">({(data?.seasons.length) > 1 ? data?.seasons.length + " Seasons" :data?.seasons.length +  " Season"})</span> : ""}</h1>
 
                 <div className="text-xl text-red-600 font-semibold">
                     Rating: <span className="bg-red-600 text-base text-white p-2 rounded-full cursor-pointer hover:bg-red-700 transition">{data?.vote_average.toFixed(1)}</span>
@@ -102,15 +106,18 @@ function MovieDetails(){
             <div className="m-2 grid grid-cols-2 gap-4  ">
                 
                 <div>
-                    <h1 className="text-xl text-red-600 font-semibold underline mb-2">Plot Summary</h1>
-                    {data?.overview}
+                    <h1 className="text-2xl text-red-600 font-semibold underline mb-2">Plot Summary</h1>
+                    <div>
+                        {data?.overview}
+                    </div>
+                    
                 </div>
                    
                
                 <div className="border">
                    
-                    {trailer?.key ? (<YouTube videoId={trailer?.key} opts={{width: "100%", height: "400px",playerVars: {autoplay: 1}}}></YouTube>) :
-                    (<p className="text-lg text-center mt-32">Trailer not available!!</p>)}
+                    {trailer?.key ? (<YouTube videoId={trailer?.key} opts={{width: "100%", height: "400px"}}></YouTube>) :
+                    (<p className="text-lg text-center mt-8 text-red-500">Trailer not available!!</p>)}
                     
                     
                 </div>
@@ -120,9 +127,22 @@ function MovieDetails(){
         
         {/* Casts */}
 
-        <div>
-
-        </div>
+              <div>
+                <h1 className="text-2xl text-red-600 font-semibold underline mb-2 ml-2">Cast</h1>
+                {castLoading && <p>Loading cast ...</p>}
+                
+                <div className="flex gap-2 overflow-x-auto p-4">
+                {cast?.cast.map(character => (
+                    <CastCard 
+                        profile_path={character.profile_path}
+                        name={character.name}
+                        character={character.character}
+                    />
+                ))}
+                </div>
+                    
+              
+              </div>
            
         </div>
     )
