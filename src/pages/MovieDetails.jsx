@@ -63,7 +63,7 @@ function MovieDetails(){
     const imageUrl = data?.backdrop_path? `${imageBaseUrl + data.backdrop_path}` : fallbackImage;
 
     if(isLoading){
-        return <p className="text-center mt-[100px]">Loading...</p>
+        return <div className="w-10 h-10 rounded-full border-2 border-red-100 border-r-red-600 animate-spin mx-auto mt-64"></div>
     }
 
     if(error){
@@ -73,12 +73,12 @@ function MovieDetails(){
     return(
         <div>
             {/* Banner Start */}
-            <div className="h-[500px] bg-cover bg-center" 
+            <div className="h-[300px] md:h-[500px] bg-cover bg-center" 
             style={{backgroundImage: `url(${imageUrl})`}}
             >
 
                 <header className="flex justify-between border-b p-2 fixed top-0 left-0 w-full bg-black">
-                    <h1 className="text-xl font-bold text-red-600">MovieDb</h1>
+                    <h1 className="text-base md:text-xl xl:text-2xl font-bold text-red-600">MovieDb</h1>
 
                     <button onClick={() => navigate("/")} className="inactive">Back Home</button>
                 </header>
@@ -88,26 +88,26 @@ function MovieDetails(){
 
 
             <div className="p-2 flex items-center pt-4 justify-between border-b">
-                <h1 className="text-3xl font-bold text-red-600" >{isMovie? data?.title : data?.name} {!isMovie? <span className="font-it">({(data?.seasons.length) > 1 ? data?.seasons.length + " Seasons" :data?.seasons.length +  " Season"})</span> : ""}</h1>
+                <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-red-600" >{isMovie? data?.title : data?.name} {!isMovie? <span className="block sm:inline">({(data?.seasons.length) > 1 ? data?.seasons.length + " Seasons" :data?.seasons.length +  " Season"})</span> : ""}</h1>
 
-                <div className="text-xl text-red-600 font-semibold">
-                    Rating: <span className="bg-red-600 text-base text-white p-2 rounded-full cursor-pointer hover:bg-red-700 transition">{data?.vote_average.toFixed(1)}</span>
+                <div className="text-base md:text-xl xl:text-2xl text-red-600 font-semibold">
+                    Rating: <span className="bg-red-600 text-sm text-white p-1 md:p-2 lg:p-3 rounded-full cursor-pointer hover:bg-red-700 transition">{data?.vote_average.toFixed(1)}</span>
                 </div>
             </div>
 
         {/* Genre */}
             <div className="m-2 text-gray-400 cursor-pointer ">
                 {data?.genres.map(genre => (
-                    <span className="hover:text-red-600 transition"> {genre.name} |</span>
+                    <span className="hover:text-red-600 transition text-sm md:text-base"> {genre.name} |</span>
                 ))}
             </div>
 
         {/* Overview  and Trailer*/}
-            <div className="m-2 grid grid-cols-2 gap-4  ">
+            <div className="m-2 grid grid-cols-1 lg:grid-cols-2 gap-4  ">
                 
                 <div>
-                    <h1 className="text-2xl text-red-600 font-semibold underline mb-2">Plot Summary</h1>
-                    <div>
+                    <h1 className="text-base md:text-xl lg:text-2xl text-red-600 font-semibold underline mb-2">Plot Summary</h1>
+                    <div className="text-sm md:text-base lg:text-xl ">
                         {data?.overview}
                     </div>
                     
@@ -125,10 +125,10 @@ function MovieDetails(){
 
             
         
-        {/* Casts */}
+        {/* Cast */}
 
               <div>
-                <h1 className="text-2xl text-red-600 font-semibold underline mb-2 ml-2">Cast</h1>
+                <h1 className="text-base md:text-xl  lg:text-2xl text-red-600 font-semibold underline mb-2 ml-2">Cast</h1>
                 {castLoading && <p>Loading cast ...</p>}
                 
                 <div className="flex gap-2 overflow-x-auto p-4">

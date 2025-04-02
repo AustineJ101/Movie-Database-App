@@ -8,7 +8,6 @@ function Home(){
     const isMovie = useAppStore(state => state.isMovie);
     const activateMovie = useAppStore(state => state.activateMovie);
     const activateTv = useAppStore(state => state.activateTv);
-//    let bannerImg;
   
     const fetchTrending = async () =>{
         const url = `https://api.themoviedb.org/3/trending/${isMovie ? "movie" : "tv"}/day?api_key=${API_KEY}`
@@ -16,7 +15,6 @@ function Home(){
         if(!response.ok) throw new Error("Failed to fetch trending");
         const data = await response.json();
 
-    //    bannerImg = `https://image.tmdb.org/t/p/original${data.results[0].backdrop_path}`;
         return data;
     }
 
@@ -62,9 +60,9 @@ function Home(){
     return(
         <div className="px-4">
             {/* Hero Section Start */}
-            <div className="h-[300px]">
-                <header className="flex justify-between border-b p-2 fixed top-0 left-0 w-full bg-black/20">
-                    <h1 className="text-xl font-bold text-red-600">MovieDb</h1>
+            <div className="h-[250px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]">
+                <header className="flex justify-between items-center border-b p-3 fixed top-0 left-0 w-full bg-black z-50">
+                    <h1 className="text-base md:text-xl xl:text-2xl 2xl-text-3xl font-bold text-red-600">MovieDb</h1>
     
                     <div className="flex gap-4">
                         <button 
@@ -84,7 +82,7 @@ function Home(){
 
                 <div className="flex flex-col justify-center h-full">
             
-                    <h1 className="text-center font-semibold text-3xl mb-4">Find More About Your Favorite {isMovie? "Movies": "TV Shows"}</h1>
+                    <h1 className="text-center font-semibold text-lg md:text-xl xl:text-3xl 2xl:text-4xl mb-4">Find More About Your Favorite {isMovie? "Movies": "TV Shows"}</h1>
                     <SearchBar />
 
                 </div>
@@ -93,11 +91,11 @@ function Home(){
             {/* Hero Section End */}
 
             {/* Trending Section Start */}
-            <div>
-                <h1 className="text-4xl font-bold m-4 text-red-600">Trending🔥</h1>
+            <div className="mb-2">
+                <h1 className="text-lg md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-red-600">Trending🔥</h1>
                 {trendingLoading && <div className="w-10 h-10 border-2 border-r-red-600 rounded-full animate-spin"></div>}
                 {trendingError && <p>{trendingError.message}</p>}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex overflow-x-auto gap-4 py-2">
                    {trending?.results.map(result => (
                     <MovieCard 
                         key={result.id}
@@ -115,11 +113,11 @@ function Home(){
             {/* Trending Section End */}
 
             {/* Now Playing Section Start */}
-            <div>
-                <h1 className="text-4xl font-bold m-4 text-red-600">Now Playing🎥</h1>
+            <div className="mb-2">
+                <h1 className="text-lg md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-red-600">Now Playing🎥</h1>
                 {nowPlayingLoading && <div className="w-10 h-10 border-2 border-r-red-600 rounded-full animate-spin"></div>}
                 {nowPlayingError && <p>{nowPlayingError.message}</p>}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex overflow-x-auto gap-4 py-2">
                    {nowPlaying?.results.map(result => (
                     <MovieCard 
                         key={result.id}
@@ -136,11 +134,11 @@ function Home(){
             {/* Now Playing Section End */}
 
             {/* Top Rated Section Start */}
-            <div>
-                <h1 className="text-4xl font-bold m-4 text-red-600">Top Rated 🚀</h1>
+            <div className="mb-2">
+                <h1 className="text-lg md:text-3xl xl:text-4xl 2xl:text-5xl font-bold text-red-600">Top Rated 🚀</h1>
                 {topRatedLoading && <div className="w-10 h-10 border-2 border-r-red-600 rounded-full animate-spin"></div>}
                 {topRatedError && <p>{topRatedError.message}</p>}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex overflow-x-auto gap-4 py-4">
                    {topRated?.results.map(result => (
                     <MovieCard 
                         key={result.id}
