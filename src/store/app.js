@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const  API_KEY = "bd1a21503c373ee9f7e8e702f2372631";
+const  API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 
 const useAppStore = create(
     persist(

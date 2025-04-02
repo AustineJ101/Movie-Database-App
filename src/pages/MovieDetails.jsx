@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAppStore from "../store/app";
 import YouTube from "react-youtube";
 import CastCard from "../components/CastCard";
-const API_KEY = "bd1a21503c373ee9f7e8e702f2372631";
+const  API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 function MovieDetails(){
     const {id} = useParams();
