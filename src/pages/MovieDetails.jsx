@@ -91,7 +91,7 @@ function MovieDetails(){
                 <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-red-600" >{isMovie? data?.title : data?.name} {!isMovie? <span className="block sm:inline">({(data?.seasons.length) > 1 ? data?.seasons.length + " Seasons" :data?.seasons.length +  " Season"})</span> : ""}</h1>
 
                 <div className="text-base md:text-xl xl:text-2xl text-red-600 font-semibold">
-                    Rating: <span className="bg-red-600 text-sm text-white p-1 md:p-2 lg:p-3 rounded-full cursor-pointer hover:bg-red-700 transition">{data?.vote_average.toFixed(1)}</span>
+                    Rating: <span className="bg-red-600 text-sm md:text-lg text-white p-2  rounded-full cursor-pointer hover:bg-red-700 transition">{data?.vote_average.toFixed(1)}</span>
                 </div>
             </div>
 
