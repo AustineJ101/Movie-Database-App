@@ -36,8 +36,11 @@ Follow these steps to set up the project up and running locally:
 # Deployment
 This app is deployed and can be accessed at: https://movie-database-app-omega.vercel.app/
 
+# Screenshots
+![Home Page](image.png)
+
 # Acknowledgments 
 
 - TMDB API for providing the movie and TV show data 
-- A special thanks to **[ALX](https://www.alx.africa/)** for providing the curriculum and support throughout this project. This Movie Database project is part of my **Capstone Project** as part of the ALX Frontend Engineering Program.
+- A special thanks to **[ALX](https://www.alxafrica.com/) for providing the curriculum and support throughout this project. This Movie Database project is part of my **Capstone Project** as part of the ALX Frontend Engineering Program.
 
