@@ -39,7 +39,7 @@ function MovieList() {
     return(
         <div>
             
-            <header className="flex justify-between border-b p-2 fixed top-0 left-0 w-full bg-black">
+            <header className="flex justify-between border-b p-2 fixed top-0 left-0 w-full bg-black z-50">
                 <h1 className="text-base md:text-xl xl:text-2xl font-bold text-red-600">MovieDb</h1>
 
                 <button onClick={() => navigate("/")} className="inactive">Back Home</button>
