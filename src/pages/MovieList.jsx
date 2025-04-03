@@ -11,8 +11,7 @@ const fetchMovies = async ({pageParam = 1, queryKey}) => {
     const response = await fetch(`https://api.themoviedb.org/3/search/${cacheKey}?api_key=${API_KEY}&query=${query}&page=${pageParam}`); 
     if(!response.ok) throw new Error("Failed to fetch")
     const data = await response.json();
-    
-    console.log(data);
+
     return data;
 }
 
