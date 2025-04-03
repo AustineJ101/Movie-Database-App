@@ -38,6 +38,8 @@ This app is deployed and can be accessed at: https://movie-database-app-omega.ve
 
 # Screenshots
 ![Home Page](image.png)
+![Movie Details Page](image-1.png)
+![Movie List Page](image-2.png)
 
 # Acknowledgments 
 
