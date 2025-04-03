@@ -1,12 +1,43 @@
-# React + Vite
+# Movie Database Application
+The **Movie Database App** is a web application that allows users to explore trending, now playing, and top-rated movies and TV shows. It also allows them to search for any movie or Tv show by their title.
+It fetches data from **TMDB API**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+- Trending Movies & TV Shows
+- Now Playing Section
+- Top Rated Section
+- Movie Details Page: Displays in-depth information about selected movies or tv show including a trailer.
 
-Currently, two official plugins are available:
+# Technologies Used
+- **React** with **Vite**
+- **Tailwind CSS** for styling
+- **TMDB API** for fetching movie and tv show data
+- **React Query** for efficient data fetching and caching
+- **Zustand** for global state management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Installation and Setup
+Follow these steps to set up the project up and running locally: 
+1. **Clone the repository:**
+ ```bash
+     git clone https://github.com/AustineJ101/Movie-Database-App.git
+```
+2. *Install Dependencies:*
+ ```bash
+    npm install
+```
+3. "Create a .env file and add your TMDB API KEY:"
+ ```bash
+   VITE_TMDB_API_KEY=your_api_key_here
+```
+4. **Start the dev server:** 
+```bash
+   npm run dev
+```
+# Deployment
+This app is deployed and can be accessed at: https://movie-database-app-omega.vercel.app/
 
-## Expanding the ESLint configuration
+# Acknowledgments 
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- TMDB API for providing the movie and TV show data 
+- A special thanks to **[ALX](https://www.alx.africa/)** for providing the curriculum and support throughout this project. This Movie Database project is part of my **Capstone Project** as part of the ALX Frontend Engineering Program.
+
